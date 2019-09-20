@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head title="buenos días">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    </head>
+    <body>
+        <div id="inicioSesion">
+            <form action="/" id="joinSession">
+                <input type="text" name="user_name" placeholder="Nombre" />
+                <input type="submit" value="Search" />
+            </form>
+        </div>
+
+        <script>
+            /* se lanzara cuando la ventana se abra */
+            window.onload = function(){
+                /*
+                $.ajax({
+                    url: "http://localhost:8080/getNames",
+                    type: "GET",
+                    contentType: "application/json",
+                    success: function (responseData) {
+                        console.log(responseData);
+                    },
+                    error: function (request, status, error) {
+                        console.log(JSON.stringify(request));
+                        console.log(JSON.stringify(status));
+                        console.log(JSON.stringify(error));
+                    }
+                });
+                /**/
+
+                /*
+                $.get("http://localhost:8080/getNames").done(function (data) {
+                    alert(data);
+                });
+                /**/
+                
+                $.ajax({ 
+                    type: "get",
+                    //dataType: 'JSON',
+                    url: "http://localhost:8080/getNames",
+                    //url: "http://webhook.site/86e48177-baa0-4450-8cec-b9e4fe6a67f1",
+                    //crossDomain: true,
+                    /*
+                    dataType: "jsonp",
+                    beforeSend: function(obj){
+                        obj.setRequestHeader("Access-Control-Allow-Origin", "*");
+                    },/**/
+                    success: function(data){        
+                        alert( JSON.stringify( data.agent.sockets.opendata.aragon.es ) );
+                    },
+                    error : function(jqXHR, textStatus, errorThrown) {
+                        //alert('Error: ' + JSON.stringify( jqXHR ) );
+                        //alert('STATUS: ' + textStatus);
+                        //alert('ErrorThrown: ' + errorThrown);
+                    }
+                });
+                /**/
+            }
+
+            
+            /* attach a submit handler to the form */
+            $("#joinSession").submit(function(event) {
+
+                /* stop form from submitting normally */
+                event.preventDefault();
+
+                /* get some values from elements on the page: */
+                var $form = $(this),
+                    term = $form.find('input[name="user_name"]').val(),
+                    url = $form.attr('action');
+                
+                alert('Bienvenido usuario : ' + term);
+                alert('Con url : ' + url );
+                /* Send the data using post */
+                /*
+                var posting = $.post(url, {
+                    s: term
+                });*/
+
+                /* Put the results in a div */
+                /*
+                posting.done(function(data) {
+                    var content = $(data).find('#content');
+                    $("#result").empty().append(content);
+                });
+                */
+            
+            });
+       </script>
+    </body>
+</html>
